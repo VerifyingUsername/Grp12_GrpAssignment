@@ -84,7 +84,12 @@ public class PlayerScript : MonoBehaviour
         {
             if (hit.collider.gameObject.tag.Equals("Enemy"))
             {
-                hit.collider.gameObject.GetComponent<EnemyScript>().OnHit(ShootingDamage);
+                hit.collider.gameObject.GetComponent<EnemyScript>().OnHit(ShootingDamage);              
+            }
+
+            else if (hit.collider.gameObject.tag.Equals("EnemyShooting"))
+            {
+                hit.collider.gameObject.GetComponent<EnemyShooting>().OnHit(ShootingDamage);
             }
         }
 
@@ -124,6 +129,17 @@ public class PlayerScript : MonoBehaviour
 
         canDamage = true;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "EnemyBullet")
+        {
+            Debug.Log("Minus Health");
+            HealthPoint -= 20;
+            GameManager.Instance.UpdateHealth(HealthPoint);
+        }
+    }
+    
 
     private void Dead()
     {

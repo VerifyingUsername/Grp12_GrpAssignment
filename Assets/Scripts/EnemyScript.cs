@@ -30,7 +30,7 @@ public class EnemyScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (playerTransform != null && !GameManager.Instance.isGameOver)
+        if (playerTransform != null && !GameManager.Instance.isGameWin)
         {
             navMeshAgent.SetDestination(playerTransform.position);
         }

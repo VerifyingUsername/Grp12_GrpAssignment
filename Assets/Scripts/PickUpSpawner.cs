@@ -36,7 +36,7 @@ public class PickUpSpawner : MonoBehaviour {
 
     void StartSpawner()
     {
-        if (GameManager.Instance.isGameOver)
+        if (GameManager.Instance.isGameWin)
         {
             CancelInvoke("StartSpawner");
             return;

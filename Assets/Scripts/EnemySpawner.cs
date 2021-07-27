@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour {
 
     private void StartSpawner()
     {
-        if (GameManager.Instance.isGameOver)
+        if (GameManager.Instance.isGameWin)
         {
             CancelInvoke("StartSpawner");
             return;

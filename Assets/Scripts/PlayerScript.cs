@@ -134,7 +134,13 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.gameObject.tag == "EnemyBullet")
         {           
-            HealthPoint -= 20;
+            HealthPoint -= 10;
+            GameManager.Instance.UpdateHealth(HealthPoint);
+        }
+
+        if(other.gameObject.tag == "EMPCharge")
+        {
+            HealthPoint -= 30;
             GameManager.Instance.UpdateHealth(HealthPoint);
         }
     }

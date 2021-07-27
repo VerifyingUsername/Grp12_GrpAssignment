@@ -11,6 +11,7 @@ TagManager:
   - Bullet
   - Access Card
   - NextLevel
+  - EMPCharge
   layers:
   - Default
   - TransparentFX

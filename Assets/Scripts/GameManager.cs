@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
 
     public string SceneName;
     [HideInInspector]
-    public bool isGameOver;
+    public bool isGameWin;
     
     private int score;
     private AudioSource audioSource;
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isGameOver)
+        if (isGameWin)
             return;
 
         UpdateTimeLeft();
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour {
 
     public void UpdateHealth(int health)
     {
-        if (health <= 0 && !isGameOver)
+        if (health <= 0 && !isGameWin)
         {
             health = 0;
             SetGameOver(false);
@@ -120,13 +120,13 @@ public class GameManager : MonoBehaviour {
         
         if (isWin)
         {
-            isGameOver = false;
+            isGameWin = false;
             GameWinUI.SetActive(true);
             audioSource.PlayOneShot(GameWinSound);
         }
         else
         {
-            isGameOver = true;
+            isGameWin = true;
             GameOverUI.SetActive(true);
             audioSource.PlayOneShot(GameLoseSound);
         }

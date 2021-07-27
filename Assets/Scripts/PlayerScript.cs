@@ -91,6 +91,12 @@ public class PlayerScript : MonoBehaviour
             {
                 hit.collider.gameObject.GetComponent<EnemyShooting>().OnHit(ShootingDamage);
             }
+
+            else if (hit.collider.gameObject.tag.Equals("EMPCharge"))
+            {
+                Debug.Log(hit);
+                hit.collider.gameObject.GetComponent<EMPScript>().OnHit(ShootingDamage);
+            }
         }
 
         audioSource.PlayOneShot(ShootingAudioClip);

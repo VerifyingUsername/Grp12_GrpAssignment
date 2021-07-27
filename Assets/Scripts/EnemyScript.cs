@@ -23,6 +23,7 @@ public class EnemyScript : MonoBehaviour {
     private NavMeshAgent navMeshAgent;
 
     public Animator EnemyAnimator;
+    //public GameObject InsectBloodPS;
 
     // Use this for initialization
     void Start () {
@@ -54,14 +55,14 @@ public class EnemyScript : MonoBehaviour {
         HealthPoint -= damage;
 
         if (HealthPoint <= 0)
-        {
-            EnemyAnimator.SetTrigger("IsDead");
+        {          
             Dead();        
         }
     }
 
     private void Dead() {
         GameManager.Instance.UpdateScore(ScoreReward, DeathAudioClip);
+        //Instantiate(InsectBloodPS, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

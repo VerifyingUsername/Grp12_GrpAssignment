@@ -25,7 +25,7 @@ public class AmmoPickUp : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag.Equals("Player"))
+        if (collider.gameObject.tag == ("Player"))
         {
             collider.gameObject.GetComponent<PlayerScript>().AddAmmo(AmmoToRegen, PickUpAudioClip);
 

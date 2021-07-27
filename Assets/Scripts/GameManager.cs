@@ -120,13 +120,13 @@ public class GameManager : MonoBehaviour {
         
         if (isWin)
         {
-            isGameWin = false;
+            isGameWin = true;
             GameWinUI.SetActive(true);
             audioSource.PlayOneShot(GameWinSound);
         }
         else
         {
-            isGameWin = true;
+            isGameWin = false;
             GameOverUI.SetActive(true);
             audioSource.PlayOneShot(GameLoseSound);
         }

@@ -133,8 +133,7 @@ public class PlayerScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "EnemyBullet")
-        {
-            Debug.Log("Minus Health");
+        {           
             HealthPoint -= 20;
             GameManager.Instance.UpdateHealth(HealthPoint);
         }

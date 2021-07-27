@@ -22,10 +22,14 @@ public class EnemyScript : MonoBehaviour {
     private Transform playerTransform;
     private NavMeshAgent navMeshAgent;
 
+    public Animator EnemyAnimator;
+
     // Use this for initialization
     void Start () {
         playerTransform = GameObject.Find("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+        EnemyAnimator = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -36,6 +40,13 @@ public class EnemyScript : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            EnemyAnimator.SetTrigger("AttackTrigger");
+        }
+    }
     
 
     public void OnHit(int damage)
@@ -44,7 +55,8 @@ public class EnemyScript : MonoBehaviour {
 
         if (HealthPoint <= 0)
         {
-            Dead();
+            EnemyAnimator.SetTrigger("IsDead");
+            Dead();        
         }
     }
 

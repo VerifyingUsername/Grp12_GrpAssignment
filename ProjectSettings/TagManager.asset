@@ -12,6 +12,10 @@ TagManager:
   - Access Card
   - NextLevel
   - EMPCharge
+  - Plug
+  - Socket
+  - PlugDoor
+  - AmmoPickUp
   layers:
   - Default
   - TransparentFX

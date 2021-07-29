@@ -149,6 +149,8 @@ public class PlayerScript : MonoBehaviour
             HealthPoint -= 30;
             GameManager.Instance.UpdateHealth(HealthPoint);
         }
+
+        
     }
     
 

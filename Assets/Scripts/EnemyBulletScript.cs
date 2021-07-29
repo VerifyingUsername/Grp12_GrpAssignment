@@ -37,6 +37,11 @@ public class EnemyBulletScript : MonoBehaviour
             
             DestroyBullet();
         }
+
+        else
+        {
+            DestroyBullet();
+        }
     }
 
     void DestroyBullet()

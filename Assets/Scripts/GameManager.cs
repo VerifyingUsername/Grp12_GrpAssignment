@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour {
     public Text AmmoTextbox;
     public string AmmoTextPrefix;
 
+    // Added code
+    public Text KeycardTextbox;
+    public string KeyCardTextPrefix;
+
+
+
     public Text HealthTextbox;
     public string HealthTextPrefix;
 
@@ -89,6 +95,15 @@ public class GameManager : MonoBehaviour {
 
         HealthTextbox.text = HealthTextPrefix + health;
     }
+
+    
+
+    public void UpdateCardCount(int CardCount)
+    {
+        KeycardTextbox.text = KeyCardTextPrefix + CardCount;      
+    }
+
+  
 
     public void UpdateTimeLeft()
     {

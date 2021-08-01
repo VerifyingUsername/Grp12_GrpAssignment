@@ -19,6 +19,8 @@ public class PlayerScript : MonoBehaviour
     [Tooltip("Starting ammo of the enemy")]
     public int AmmoCount;
 
+    public static int CardCount;
+
     [Tooltip("Shooting sound effect")]
     public AudioClip ShootingAudioClip;
 
@@ -136,6 +138,14 @@ public class PlayerScript : MonoBehaviour
         canDamage = true;
     }
 
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "KeyDoor")
+    //    {
+    //        Debug.Log("Door touched");
+    //    }
+    //}
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "EnemyBullet")
@@ -150,7 +160,18 @@ public class PlayerScript : MonoBehaviour
             GameManager.Instance.UpdateHealth(HealthPoint);
         }
 
-        
+        if(other.gameObject.tag == "KeyCard")
+        {
+            CardCount += 1;
+            GameManager.Instance.UpdateCardCount(CardCount);
+            Destroy(other.gameObject);
+        }
+
+
+        //if (other.gameObject.tag == "KeyDoor")
+        //{          
+        //    Destroy(other.gameObject);
+        //}
     }
     
 

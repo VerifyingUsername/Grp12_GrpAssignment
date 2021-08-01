@@ -16,6 +16,10 @@ TagManager:
   - Socket
   - PlugDoor
   - AmmoPickUp
+  - PlugDoor2
+  - Socket2
+  - KeyCard
+  - KeyDoor
   layers:
   - Default
   - TransparentFX

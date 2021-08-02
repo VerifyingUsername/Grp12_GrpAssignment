@@ -12,7 +12,7 @@ public class EnemyBulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 5);
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -38,11 +38,13 @@ public class EnemyBulletScript : MonoBehaviour
             DestroyBullet();
         }
 
-        else
+        if (other.CompareTag("Wall"))
         {
+            //Debug.Log("Bullet hit wall");
             DestroyBullet();
         }
     }
+
 
     void DestroyBullet()
     {

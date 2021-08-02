@@ -139,13 +139,6 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "KeyDoor")
-    //    {
-    //        Debug.Log("Door touched");
-    //    }
-    //}
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "EnemyBullet")
@@ -166,12 +159,7 @@ public class PlayerScript : MonoBehaviour
             GameManager.Instance.UpdateCardCount(CardCount);
             Destroy(other.gameObject);
         }
-
-
-        //if (other.gameObject.tag == "KeyDoor")
-        //{          
-        //    Destroy(other.gameObject);
-        //}
+        
     }
     
 

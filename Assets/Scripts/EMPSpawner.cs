@@ -5,25 +5,46 @@ using UnityEngine;
 public class EMPSpawner : MonoBehaviour
 {
     public GameObject EMPCharge;
+    public float timeBetweenSpawn;
+    bool alreadySpawned;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.Instantiate(EMPCharge, transform.position, Quaternion.identity);
+        //GameObject.Instantiate(EMPCharge, transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //StartCoroutine(Spawn());
+        //Instantiate(EMPCharge, transform.position, Quaternion.identity);
+        SpawningEMP();
     }
 
-    IEnumerator Spawn()
+    //IEnumerator Spawn()
+    //{
+    //    while(true)
+    //    {
+    //        yield return new WaitForSeconds(5.0f);
+    //        Instantiate(EMPCharge, transform.position, Quaternion.identity);
+
+    //    }
+    //}
+
+    private void SpawningEMP()
     {
-        while(true)
+        if (!alreadySpawned)
         {
-            GameObject.Instantiate(EMPCharge, transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(2.0f);
+            Instantiate(EMPCharge, transform.position, Quaternion.identity);
+
+            alreadySpawned = true;
+            Invoke(nameof(ResetSpawn), timeBetweenSpawn);
         }
+    }
+
+    private void ResetSpawn()
+    {
+        alreadySpawned = false;
     }
 }

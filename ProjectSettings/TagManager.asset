@@ -21,6 +21,9 @@ TagManager:
   - KeyCard
   - KeyDoor
   - Mine
+  - enemy
+  - TrigDoor
+  - TurretBullet
   layers:
   - Default
   - TransparentFX

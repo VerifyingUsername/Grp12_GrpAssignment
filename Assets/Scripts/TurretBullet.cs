@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EMPScript : MonoBehaviour
+public class TurretBullet : MonoBehaviour
 {
     public int HealthPoint;
 
-    private Transform Player;
+    private Transform player;
     public Vector3 Target;
 
     public float speed;
@@ -14,16 +14,15 @@ public class EMPScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player").transform;
-        Target = new Vector3(Player.transform.position.x, Player.transform.position.y, Player.transform.position.z);
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        Target = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 3);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //GameObject.FindGameObjectsWithTag("Player");
         transform.position = Vector3.MoveTowards(transform.position, Target, speed * Time.deltaTime);
     }
 
@@ -37,26 +36,21 @@ public class EMPScript : MonoBehaviour
         }
     }
 
-    private void Dead()
-    {
-        Destroy(gameObject);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            Destroy(gameObject);
-        }
-
-        if (other.gameObject.tag == "Bullet")
-        {
-            Destroy(gameObject);
-        }
-
         if (other.gameObject.tag == "Wall")
         {
             Destroy(gameObject);
         }
+
+        if (other.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Dead()
+    {
+        Destroy(gameObject);
     }
 }

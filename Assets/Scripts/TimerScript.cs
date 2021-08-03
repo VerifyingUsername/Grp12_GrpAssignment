@@ -11,44 +11,46 @@ public class TimerScript : MonoBehaviour
     float CardText = 0f;
 
     [SerializeField] Text countdownText;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        currentTime = startingTime;
+        currentTime = 10f;
+        CardText = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(CardText == 1)
+        if (PlayerScript.CardText >= 4)
         {
             currentTime -= 1 * Time.deltaTime;
-            countdownText.text = currentTime.ToString("0.0");
+            countdownText.text = "Timer: " + currentTime.ToString("0.0");
 
             if (currentTime <= 0)
             {
                 currentTime = 0;
                 SceneManager.LoadScene("L1");
             }
-            else if(currentTime >= 10)
+            else if (currentTime >= 10)
             {
-                currentTime = 12;
+               currentTime = 12;
                 currentTime += 1 * Time.deltaTime;
                 countdownText.text = currentTime.ToString("0.0");
             }
         }
+
+        Debug.Log(PlayerScript.CardText);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "Access Card")
+        if (collision.gameObject.tag == "Access Card")
         {
-            Destroy(other.gameObject);
-            CardText++;
+            Destroy(collision.gameObject);
         }
 
-        if(other.tag == "NextLevel")
+        if (collision.gameObject.tag == "TrigDoor" && CardText >= 4)
         {
             if (currentTime > 0)
             {

@@ -166,6 +166,11 @@ public class PlayerScript : MonoBehaviour
             GameManager.Instance.UpdateHealth(HealthPoint);
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.tag == "TrigDoor")
+        {
+            Destroy(other.gameObject);
+        }
     }
     
 

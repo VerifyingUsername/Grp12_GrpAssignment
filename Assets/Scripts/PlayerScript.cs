@@ -160,6 +160,12 @@ public class PlayerScript : MonoBehaviour
             Destroy(other.gameObject);
         }
         
+        if(other.gameObject.tag == "Mine")
+        {
+            HealthPoint -= 50;
+            GameManager.Instance.UpdateHealth(HealthPoint);
+            Destroy(other.gameObject);
+        }
     }
     
 

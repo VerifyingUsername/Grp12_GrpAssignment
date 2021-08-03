@@ -20,6 +20,7 @@ TagManager:
   - Socket2
   - KeyCard
   - KeyDoor
+  - Mine
   layers:
   - Default
   - TransparentFX

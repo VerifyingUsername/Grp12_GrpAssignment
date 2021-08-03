@@ -24,11 +24,11 @@ public class HealthPickUp : MonoBehaviour {
         transform.Rotate(Vector3.up, AnimateSpeed * Time.deltaTime);
 	}
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collider.gameObject.tag == ("Player"))
+        if (other.gameObject.tag == ("Player"))
         {
-            collider.gameObject.GetComponent<PlayerScript>().AddHealth(HealthToRegen, PickUpAudioClip);
+            other.gameObject.GetComponent<PlayerScript>().AddHealth(HealthToRegen, PickUpAudioClip);
 
             Destroy(gameObject);
         }

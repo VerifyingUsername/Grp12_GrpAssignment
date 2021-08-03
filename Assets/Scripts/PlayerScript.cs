@@ -20,6 +20,7 @@ public class PlayerScript : MonoBehaviour
     public int AmmoCount;
 
     public static int CardCount;
+    public static float CardText;
 
     [Tooltip("Shooting sound effect")]
     public AudioClip ShootingAudioClip;
@@ -169,6 +170,12 @@ public class PlayerScript : MonoBehaviour
 
         if (other.gameObject.tag == "TrigDoor")
         {
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "Access Card")
+        {
+            CardText++;
             Destroy(other.gameObject);
         }
     }

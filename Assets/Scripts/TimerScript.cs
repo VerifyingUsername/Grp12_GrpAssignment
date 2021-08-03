@@ -34,7 +34,7 @@ public class TimerScript : MonoBehaviour
             }
             else if (currentTime >= 10)
             {
-               currentTime = 12;
+                currentTime = 12;
                 currentTime += 1 * Time.deltaTime;
                 countdownText.text = currentTime.ToString("0.0");
             }

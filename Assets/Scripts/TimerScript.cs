@@ -5,10 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TimerScript : MonoBehaviour
-{
+{   
     float currentTime = 0f;
     float startingTime = 10f;
     float CardText = 0f;
+
+    public static bool TimerPause = false;
 
     [SerializeField] Text countdownText;
 
@@ -32,12 +34,12 @@ public class TimerScript : MonoBehaviour
                 currentTime = 0;
                 SceneManager.LoadScene("L1");
             }
-            else if (currentTime >= 10)
-            {
-                currentTime = 12;
-                currentTime += 1 * Time.deltaTime;
-                countdownText.text = currentTime.ToString("0.0");
-            }
+            //else if (currentTime >= 10)
+            //{
+            //    currentTime = 12;
+            //    currentTime += 1 * Time.deltaTime;
+            //    countdownText.text = currentTime.ToString("0.0");
+            //}
         }
 
         Debug.Log(PlayerScript.CardText);
@@ -52,10 +54,24 @@ public class TimerScript : MonoBehaviour
 
         if (collision.gameObject.tag == "TrigDoor" && CardText >= 4)
         {
-            if (currentTime > 0)
-            {
-                currentTime = 12;
-            }
+            FixedTime();
+            //currentTime = 12;
+            //if (currentTime > 0)
+            //{
+            //    currentTime = 12;
+            //}
         }
+    }
+
+    void Pause()
+    {
+        Time.timeScale = 0f;
+        TimerPause = true;
+    }
+
+    private void FixedTime()
+    {
+        currentTime = 12f;
+        countdownText.text = "Timer: " + currentTime.ToString("--");
     }
 }

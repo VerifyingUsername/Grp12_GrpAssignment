@@ -139,12 +139,14 @@ public class GameManager : MonoBehaviour {
             isGameWin = true;
             GameWinUI.SetActive(true);
             audioSource.PlayOneShot(GameWinSound);
+            Time.timeScale = 0f;
         }
         else
         {
             isGameWin = false;
             GameOverUI.SetActive(true);
             audioSource.PlayOneShot(GameLoseSound);
+            Time.timeScale = 0f;
         }
     }
 
@@ -169,5 +171,6 @@ public class GameManager : MonoBehaviour {
     public void LoadNextLevel()
     {
         SceneManager.LoadScene("L2");
+        Time.timeScale = 1f;
     }
 }

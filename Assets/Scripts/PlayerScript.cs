@@ -22,6 +22,8 @@ public class PlayerScript : MonoBehaviour
     public static int CardCount;
     public static float CardText;
 
+    float currentTime = 0f;
+
     [Tooltip("Shooting sound effect")]
     public AudioClip ShootingAudioClip;
 
@@ -33,8 +35,7 @@ public class PlayerScript : MonoBehaviour
     private bool canShoot;
     private bool canDamage;
     private AudioSource audioSource;
-    private GameObject camera = null;
-    
+    private GameObject camera = null; 
 
     // Use this for initialization
     void Start()
@@ -49,6 +50,9 @@ public class PlayerScript : MonoBehaviour
 
         GameManager.Instance.UpdateAmmo(AmmoCount);
         GameManager.Instance.UpdateHealth(HealthPoint);
+
+        currentTime = 0f;
+        CardText = 0f;
     }
 
     // Update is called once per frame

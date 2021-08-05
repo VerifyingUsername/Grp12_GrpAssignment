@@ -21,6 +21,7 @@ public class DroneTurret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.LookAt(player);
         distance = Vector3.Distance(player.position, transform.position);
         if (distance <= howclose)
         {

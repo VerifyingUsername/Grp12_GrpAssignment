@@ -153,6 +153,7 @@ public class GameManager : MonoBehaviour {
     public void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
     }
 
 
@@ -172,5 +173,10 @@ public class GameManager : MonoBehaviour {
     {
         SceneManager.LoadScene("L2");
         Time.timeScale = 1f;
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

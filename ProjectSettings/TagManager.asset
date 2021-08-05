@@ -24,6 +24,7 @@ TagManager:
   - enemy
   - TrigDoor
   - TurretBullet
+  - HealthPickUp
   layers:
   - Default
   - TransparentFX

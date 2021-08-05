@@ -26,6 +26,7 @@ public class PlayerScript : MonoBehaviour
 
     [Tooltip("Shooting sound effect")]
     public AudioClip ShootingAudioClip;
+    public AudioClip HealthPickUpÇlip;
 
     // Reference to muzzle flash //
     public GameObject MuzzleFlash;
@@ -182,6 +183,12 @@ public class PlayerScript : MonoBehaviour
             CardText++;
             Destroy(other.gameObject);
         }
+
+        //if (other.gameObject.tag == "HealthPickUp")
+        //{
+        //    Debug.Log("Ädd health");  
+        //    AddHealth();
+        //}
     }
     
 
@@ -200,9 +207,9 @@ public class PlayerScript : MonoBehaviour
 
     public void AddHealth(int health, AudioClip audioClip)
     {
+        //Debug.log
         HealthPoint += health;
         GameManager.Instance.UpdateHealth(HealthPoint);
-
-        audioSource.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(HealthPickUpÇlip);
     }
 }

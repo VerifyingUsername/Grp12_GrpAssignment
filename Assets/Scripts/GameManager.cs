@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour {
     public Text KeycardTextbox;
     public string KeyCardTextPrefix;
 
+    public Text AccessCardTextbox;
+    public string AccessCardTextPrefix;
+
 
 
     public Text HealthTextbox;
@@ -101,6 +104,11 @@ public class GameManager : MonoBehaviour {
     public void UpdateCardCount(int CardCount)
     {
         KeycardTextbox.text = KeyCardTextPrefix + CardCount;      
+    }
+
+    public void UpdateCardText(int CardText)
+    {
+        AccessCardTextbox.text = AccessCardTextPrefix + CardText;
     }
 
   

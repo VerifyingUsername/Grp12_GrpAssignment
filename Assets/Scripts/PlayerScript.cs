@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour
     public int AmmoCount;
 
     public static int CardCount;
-    public static float CardText;
+    public static int CardText;
 
     float currentTime = 0f;
 
@@ -53,7 +53,7 @@ public class PlayerScript : MonoBehaviour
         GameManager.Instance.UpdateHealth(HealthPoint);
 
         currentTime = 0f;
-        CardText = 0f;
+        CardText = 0;
     }
 
     // Update is called once per frame
@@ -165,8 +165,15 @@ public class PlayerScript : MonoBehaviour
             GameManager.Instance.UpdateCardCount(CardCount);
             Destroy(other.gameObject);
         }
-        
-        if(other.gameObject.tag == "Mine")
+
+        if (other.gameObject.tag == "Access Card")
+        {
+            CardText+=1;
+            GameManager.Instance.UpdateCardText(CardText);
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "Mine")
         {
             HealthPoint -= 50;
             GameManager.Instance.UpdateHealth(HealthPoint);
@@ -175,13 +182,11 @@ public class PlayerScript : MonoBehaviour
 
         if (other.gameObject.tag == "TrigDoor")
         {
-            Destroy(other.gameObject);
-        }
-
-        if (other.gameObject.tag == "Access Card")
-        {
-            CardText++;
-            Destroy(other.gameObject);
+            if(CardText == 4)
+            {
+                Destroy(other.gameObject);
+            }
+            //Destroy(other.gameObject);
         }
 
         //if (other.gameObject.tag == "HealthPickUp")

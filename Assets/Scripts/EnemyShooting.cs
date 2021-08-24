@@ -13,6 +13,8 @@ public class EnemyShooting : MonoBehaviour
     public int ScoreReward;
     public AudioClip DeathAudioClip;
 
+    private Animator animator;
+
     public LayerMask whatIsGround, whatIsPlayer;
 
     //Patroling
@@ -29,6 +31,10 @@ public class EnemyShooting : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
 
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -80,6 +86,7 @@ public class EnemyShooting : MonoBehaviour
 
     private void ChasePlayer()
     {
+        animator.SetTrigger("NearPlayerTrigger");
         agent.SetDestination(player.position);
     }
 
@@ -92,6 +99,7 @@ public class EnemyShooting : MonoBehaviour
 
         if (!alreadyAttacked)
         {
+            animator.SetTrigger("ShootTrigger");
             Instantiate(projectile, transform.position, Quaternion.identity);
 
 
@@ -107,6 +115,7 @@ public class EnemyShooting : MonoBehaviour
 
     public void OnHit(int damage)
     {
+        Debug.Log("Enemy hit");
         HealthPoint -= damage;
 
         if (HealthPoint <= 0)

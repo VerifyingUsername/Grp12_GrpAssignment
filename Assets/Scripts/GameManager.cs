@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour {
 
     public void UpdateCardCount(int CardCount)
     {
-        KeycardTextbox.text = KeyCardTextPrefix + CardCount;      
+        KeycardTextbox.text = KeyCardTextPrefix + CardCount + "/2";      
     }
 
     public void UpdateCardText(int CardText)

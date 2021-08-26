@@ -9,6 +9,9 @@ public class EnemyShooting : MonoBehaviour
 
     public Transform player;
     public GameObject projectile;
+
+    public GameObject enemyFirePoint;
+
     public int HealthPoint;
     public int ScoreReward;
     public AudioClip DeathAudioClip;
@@ -100,7 +103,7 @@ public class EnemyShooting : MonoBehaviour
         if (!alreadyAttacked)
         {
             animator.SetTrigger("ShootTrigger");
-            Instantiate(projectile, transform.position, Quaternion.identity);
+            Instantiate(projectile, enemyFirePoint.transform.position, enemyFirePoint.transform.rotation);
 
 
             alreadyAttacked = true;

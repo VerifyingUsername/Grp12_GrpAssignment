@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour {
         if (isWin)
         {
             isGameWin = true;
-            GameWinUI.SetActive(true);
+            GameWinUI.SetActive(true);           
             audioSource.PlayOneShot(GameWinSound);
             Time.timeScale = 0f;
         }

@@ -54,6 +54,7 @@ public class PlayerScript : MonoBehaviour
 
         currentTime = 0f;
         CardText = 0;
+        CardCount = 0;
     }
 
     // Update is called once per frame
@@ -70,17 +71,17 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && canShoot && AmmoCount > 0)
         {
             // Play muzzle flash //
-            StartCoroutine(PlayMuzzleFlash(0.05f));
+            StartCoroutine(PlayMuzzleFlash(/*0.05f*/));
 
             StartCoroutine(SpawnBullet());
         }
     }
 
     // Play muzzle flash function //
-    private IEnumerator PlayMuzzleFlash(float duration)
+    private IEnumerator PlayMuzzleFlash(/*float duration*/)
     {
         MuzzleFlash.SetActive(true);
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(0.1f/*duration*/);
         MuzzleFlash.SetActive(false);
     }
 

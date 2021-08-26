@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 65770236593528736}
   - component: {fileID: 114307210020662174}
   - component: {fileID: 82158249389846744}
+  - component: {fileID: 1757277469}
   m_Layer: 0
   m_Name: HealthPickUp
   m_TagString: HealthPickUp
@@ -93,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthToRegen: 10
-  PickUpAudioClip: {fileID: 8300000, guid: 5d274e74085c8e641a7b88d8429cd7b8, type: 3}
+  PickUpAudioClip: {fileID: 8300000, guid: a3b881659652ee84897fb17a8974cc30, type: 3}
 --- !u!82 &82158249389846744
 AudioSource:
   m_ObjectHideFlags: 0
@@ -190,6 +191,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &1757277469
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293649631021698}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 1
 --- !u!1 &1377640066052664
 GameObject:
   m_ObjectHideFlags: 0

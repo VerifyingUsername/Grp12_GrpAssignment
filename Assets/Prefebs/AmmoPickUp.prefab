@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AmmoToRegen: 10
-  PickUpAudioClip: {fileID: 8300000, guid: c336d162961a45845ba51c5502722323, type: 3}
+  PickUpAudioClip: {fileID: 8300000, guid: 347a05686015711429b6a72648a0daea, type: 3}
 --- !u!1 &1355370091439674
 GameObject:
   m_ObjectHideFlags: 0

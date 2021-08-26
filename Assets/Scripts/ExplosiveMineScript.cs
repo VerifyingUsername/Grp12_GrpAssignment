@@ -5,6 +5,9 @@ using UnityEngine;
 public class ExplosiveMineScript : MonoBehaviour
 {
     public ParticleSystem Explosion;
+
+    
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,7 @@ public class ExplosiveMineScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            
             Instantiate(Explosion, transform.position, Quaternion.identity);
             //Destroy(gameObject);
         }

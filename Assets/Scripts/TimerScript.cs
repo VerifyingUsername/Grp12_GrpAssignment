@@ -42,7 +42,7 @@ public class TimerScript : MonoBehaviour
             //}
         }
 
-        Debug.Log(PlayerScript.CardText);
+        //Debug.Log(PlayerScript.CardText);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -26,6 +26,7 @@ public class PlayerScript : MonoBehaviour
 
     [Tooltip("Shooting sound effect")]
     public AudioClip ShootingAudioClip;
+    public AudioClip LandMineClip;
     public AudioClip HealthPickUpÇlip;
 
     // Reference to muzzle flash //
@@ -36,7 +37,12 @@ public class PlayerScript : MonoBehaviour
     private bool canShoot;
     private bool canDamage;
     private AudioSource audioSource;
-    private GameObject camera = null; 
+    private GameObject camera = null;
+
+    // Pause Declaration
+    public GameObject PauseMenu;
+    public GameObject MainUi;
+    private bool GamePaused;
 
     // Use this for initialization
     void Start()
@@ -47,6 +53,7 @@ public class PlayerScript : MonoBehaviour
         canShoot = true;
         canDamage = true;
         audioSource.clip = ShootingAudioClip;
+        audioSource.clip = LandMineClip;
         camera = GameObject.FindGameObjectWithTag("MainCamera");
 
         GameManager.Instance.UpdateAmmo(AmmoCount);
@@ -55,6 +62,9 @@ public class PlayerScript : MonoBehaviour
         currentTime = 0f;
         CardText = 0;
         CardCount = 0;
+        
+        PauseMenu.SetActive(false);
+        GamePaused = false;
     }
 
     // Update is called once per frame
@@ -64,8 +74,39 @@ public class PlayerScript : MonoBehaviour
             return;
 
         Shoot();
+
+        if (Input.GetKeyDown(KeyCode.Escape) && GamePaused == false)
+        {
+            Pause();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && GamePaused == true)
+        {
+            Resume();
+        }
+        
     }
 
+    // Pause Menu
+    public void Pause()
+    {
+        GamePaused = true;
+        Cursor.visible = true;
+        MainUi.SetActive(false);
+        PauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Resume()
+    {
+        GamePaused = false;
+        Cursor.visible = false;
+        MainUi.SetActive(true);
+        PauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+
+    // Shoot
     private void Shoot()
     {
         if (Input.GetMouseButtonDown(0) && canShoot && AmmoCount > 0)
@@ -103,7 +144,7 @@ public class PlayerScript : MonoBehaviour
 
             else if (hit.collider.gameObject.tag.Equals("EMPCharge"))
             {
-                Debug.Log(hit);
+                //Debug.Log(hit);
                 hit.collider.gameObject.GetComponent<EMPScript>().OnHit(ShootingDamage);
             }
         }
@@ -176,6 +217,7 @@ public class PlayerScript : MonoBehaviour
 
         if (other.gameObject.tag == "Mine")
         {
+            audioSource.PlayOneShot(LandMineClip);
             HealthPoint -= 50;
             GameManager.Instance.UpdateHealth(HealthPoint);
             Destroy(other.gameObject);
@@ -186,15 +228,9 @@ public class PlayerScript : MonoBehaviour
             if(CardText == 4)
             {
                 Destroy(other.gameObject);
-            }
-            //Destroy(other.gameObject);
+            }          
         }
 
-        //if (other.gameObject.tag == "HealthPickUp")
-        //{
-        //    Debug.Log("Ädd health");  
-        //    AddHealth();
-        //}
     }
     
 

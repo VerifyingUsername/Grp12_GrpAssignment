@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour {
 
     public void SetGameOver(bool isWin) {
 
-        Debug.Log("Game over");
+        //Debug.Log("Game over");
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         GameObject.Find("FPSPlayer").GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;

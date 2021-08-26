@@ -118,7 +118,7 @@ public class EnemyShooting : MonoBehaviour
 
     public void OnHit(int damage)
     {
-        Debug.Log("Enemy hit");
+        //Debug.Log("Enemy hit");
         HealthPoint -= damage;
 
         if (HealthPoint <= 0)

@@ -18,6 +18,9 @@ public class EnemyShooting : MonoBehaviour
 
     private Animator animator;
 
+    public GameObject EnemyBoom;
+    public GameObject BoomSpawn;
+
     public LayerMask whatIsGround, whatIsPlayer;
 
     //Patroling
@@ -33,10 +36,13 @@ public class EnemyShooting : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    public GameObject EnemyMuzzle;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        EnemyMuzzle.SetActive(false);
     }
     private void Awake()
     {
@@ -103,11 +109,14 @@ public class EnemyShooting : MonoBehaviour
         if (!alreadyAttacked)
         {
             animator.SetTrigger("ShootTrigger");
+            EnemyMuzzle.SetActive(false);
             Instantiate(projectile, enemyFirePoint.transform.position, enemyFirePoint.transform.rotation);
 
 
             alreadyAttacked = true;
+            
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            EnemyMuzzle.SetActive(true);
         }
     }
 
@@ -123,6 +132,7 @@ public class EnemyShooting : MonoBehaviour
 
         if (HealthPoint <= 0)
         {
+
             Dead();
         }
     }
@@ -130,6 +140,7 @@ public class EnemyShooting : MonoBehaviour
     private void Dead()
     {
         GameManager.Instance.UpdateScore(ScoreReward, DeathAudioClip);
-        Destroy(gameObject);
+        Instantiate(EnemyBoom, BoomSpawn.transform.position, BoomSpawn.transform.rotation);
+        Destroy(gameObject, 0.1f);
     }
 }

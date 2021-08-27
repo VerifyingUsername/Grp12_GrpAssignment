@@ -23,7 +23,7 @@ public class EnemyScript : MonoBehaviour {
     private NavMeshAgent navMeshAgent;
 
     public Animator EnemyAnimator;
-    //public GameObject InsectBloodPS;
+    public GameObject EnemyBoomPS;
 
     // Use this for initialization
     void Start () {
@@ -62,7 +62,7 @@ public class EnemyScript : MonoBehaviour {
 
     private void Dead() {
         GameManager.Instance.UpdateScore(ScoreReward, DeathAudioClip);
-        //Instantiate(InsectBloodPS, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        Instantiate(EnemyBoomPS, transform.position, Quaternion.identity);
+        Destroy(gameObject, 0.1f);
     }
 }

@@ -130,8 +130,10 @@ MonoBehaviour:
   ContactDamage: 10
   HealthPoint: 100
   ScoreReward: 5
-  DeathAudioClip: {fileID: 8300000, guid: b6e3782b2d59bcd4c926a92b6c51ea26, type: 3}
+  DeathAudioClip: {fileID: 8300000, guid: b269c1579046ec74a9b89bb2884e5b0f, type: 3}
   EnemyAnimator: {fileID: 271210860}
+  EnemyBoomPS: {fileID: 7974533037077861756, guid: 251a75a482151294999ed9075bf8fb2b,
+    type: 3}
 --- !u!195 &195818944686343068
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -142,7 +144,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

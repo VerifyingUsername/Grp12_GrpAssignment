@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour {
 
     public void UpdateCardText(int CardText)
     {
-        AccessCardTextbox.text = AccessCardTextPrefix + CardText;
+        AccessCardTextbox.text = AccessCardTextPrefix + CardText + "/4";
     }
 
   
